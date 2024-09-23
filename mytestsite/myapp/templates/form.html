@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styleform.css' %}">
+  
+</head>
+<body>
+    <!-- {% load static %}
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+            alert("{{ message|escapejs }}");
+        {% endfor %}
+    </script>
+    {% endif %}  -->
+     
+<div class="main">
+    {% if messages %}
+        <div class="alert alert-danger">
+            <!-- {% for message in messages %}
+                    <p>{{ message }}</p>
+            {% endfor %} -->
+        <script> 
+            {% for message in messages %}
+                alert("{{ message|escapejs }}");
+            {% endfor %}
+        </script>  
+        </div>
+    
+    {{ form.non_field_errors }}  
+    {% endif %}
+    <header class="hmhd"> <a href="http://127.0.0.1:8000/"><span> Home </span></a>
+
+    </header>
+
+    <div class="parent">
+    <div id ="centered">
+        <section>
+            <div class="h12">
+            <header> <div class="hd"> <h1 class="card-header">Enter your username & email
+            <span class="ttt" > To continue sign in or sign up</span>
+            </h1></div>
+            </header>
+            </div>
+            <div id="form">
+                <!-- <form action="/signup" method="post" class="frm"> -->
+                    <!-- {% csrf_token %} -->
+                <form method="POST" action="{% url 'shop:signup' %}" class="frm">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}                    
+                        
+                    <div class="eml"> 
+                        <label for="id_username">Username: </label>                       
+                        {{ form.username }}
+                        {{ form.username.errors }}
+                    <!-- <input class="input-text" type="text" name="username" placeholder="Username" Required> -->
+                    </div>
+                    <div class="eml">
+                        <label for="id_password1">Password: </label>
+                        {{ form.password1.errors }}
+                        {{ form.password1 }}
+                        <div class="passcrt frm">
+                            <ul>
+                              <li>Your password can’t be too similar to your other personal information.</li>
+                              <li>Your password must contain at least 8 characters.</li>                                
+                              <li>Your password can’t be a commonly used password.</li>
+                              <li>Your password can’t be entirely numeric.</li>
+    
+                            </ul>
+                        </div>
+                    <!-- <input class="input-text" type="password" name="password" placeholder=" Enter your password" Required> -->
+                    </div>
+                    <div class="eml">
+                       <label for="id_password2"> Password confirmation: </label>                      
+                       {{ form.password2 }}
+                       {{ form.password2.errors }}
+
+                    <!-- <input class="input-text" type="password" name="password2" placeholder=" Enter your password" Required> -->
+                    </div>
+                    <div class="eml">
+                        <button class="signin"> sign up</button>
+                    </div>
+                </form> 
+                <!-- img -->
+                <!-- <div> <img src="{% static 'images/icon/language.png' %}"></div>
+                <div> <img src="{% static 'images/small-product/mini1.png' %}"></div>
+                  templates/signup.html -->
+            </div>
+            </section>
+    </div>
+    </div>              
+<!-- <h2>Signup</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+<form method="POST" action="{% url 'shop:signup' %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    
+    <div class="form-group">
+        <label for="id_username">Username</label>
+        {{ form.username }}
+    </div>
+
+
+    <div class="form-group">
+        <label for="id_password1">Password</label>
+        {{ form.password1 }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_password2">Confirm Password</label>
+        {{ form.password2 }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+  -->
+</div>
+</body>
+</html>
+               

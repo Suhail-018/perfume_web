@@ -1,0 +1,160 @@
+
+/* html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+} */
+
+div.main{
+    height: 100%;
+}
+.hmhd{
+    display: block;
+    text-align: center;
+}
+.hmhd > a{
+    /* display: inline-flex; */
+    float: left;
+    clear: left;
+}
+a > span{
+    background-color: rgba(213, 238, 255);
+    /* display: inline-flex; */
+    padding: 10px;
+    /*border: 1.5px solid black;*/
+    border-radius: 2px;
+    width: 7em;
+    text-align: center;
+    float: left;
+    margin: 20px;
+    clear: left;
+}
+h2{
+    font-size: 50px;
+    font-weight: 100;
+    text-align: center;
+}
+.parent{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*border: 2px dotted black;*/
+    /* width: 100%; */
+    /* height: 100%; */
+    position: relative;
+}
+#centered{
+    border-radius: 4px;
+    border: 1px solid cornflowerblue;
+    width: 330px;
+    height: 330px;
+}
+#centered1{
+    border-radius: 4px;
+    border: 1px solid cornflowerblue;
+    width: 20em;
+    height: 20em;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.hd > h1
+{
+    text-align: center;
+    padding: 3px;
+}
+.frm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.eml{
+    padding: 10px;
+    margin: 4px;
+}
+.h12 {
+    
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.h12 > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card-header {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+.ttt {
+    display: block;
+    font-weight: 400;
+
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.input-text {
+    width: 100%;
+    border-radius: .375rem;
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgb(158 158 158 / var(--tw-border-opacity));
+    padding: 1rem;
+    font-size: 16px;
+    --tw-text-opacity: 1;
+    color: rgb(94 94 114 / var(--tw-text-opacity));
+}
+.signin{
+    flex: 1 1 0%;
+    border-radius: .375rem;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: 700;
+    --tw-border-opacity: 1;
+    border-color: rgb(2 80 187 / var(--tw-border-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 96 223 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+   
+}
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.passcrt{
+    background-color: antiquewhite;
+    border: 1px solid black;
+}

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'stylelogin.css' %}">
+  
+</head>
+<body>
+    <!-- templates/login.html -->
+<div class="main">
+
+    
+    <header class="hmhd"> 
+        <h2>Login</h2>
+                <a href="http://127.0.0.1:8000/"><span> Home </span></a>
+       
+    </header>
+
+    <div class="parent">
+    <div id ="centered1">
+        <div class="tobecent">
+                {% if messages %}
+                    <div class="alert alert-danger">
+                        <!-- {% for message in messages %}
+                                <p>{{ message }}</p>
+                        {% endfor %} -->
+                    <script> 
+                        {% for message in messages %}
+                            alert("{{ message|escapejs }}");
+                        {% endfor %}
+                    </script>  
+                    </div>
+                {{ form.non_field_errors }}  
+                {% endif %}
+            <form method="POST" class="frm">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="signin">Login</button>
+            </form>
+        </div>
+
+    </div>
+    </div>
+</div>
+</body></html>

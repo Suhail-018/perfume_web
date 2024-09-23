@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cart</title>
+    <link rel="stylesheet" href="{% static 'stylecart.css' %}">
+</head>
+<body>
+
+<div class="cart-containers">
+        <header>
+            <div class="header">
+                <div> <h1> <span> Cart </span></h1></div>
+                <div class="ull"> <ul> <li> <a href=" {% url 'shop:main' %}"> Home</a></li> <li class="gret"> > </li> <li> Cart </li></ul></div>
+            </div>
+
+
+        </header>
+</div>
+            <!--    for empty cart -->
+        {% if not cart_items %}
+
+        <div class="ifempty">
+            <div class="imgpar">
+                <div class="imgu"> <m-image class="minimog-lazy-image m-img-loaded" style="--lazy-image-width: 350px;--lazy-image-height: 87.714285714286%;" intersecting="true"><img loading="lazy" decoding="async" src="https://i0.wp.com/oudera.ae/wp-content/themes/minimog/assets/woocommerce/empty-cart.png?resize=350%2C307&amp;ssl=1" width="350" height="307" alt="Cart empty" data-recalc-dims="1"></m-image></div>
+            </div>
+            <h2 class="empty-cart-heading">Your cart is currently empty.</h2>
+            <p class="empty-cart-text">You may check out all the available products and buy some in the shop.</p>
+            <p class="return-to-shop">
+                <a class="button wc-backward" href="https://oudera.ae/shop/">Return to shop</a>
+            </p>
+        </div>
+        {% endif %}
+<!--    for empty cart -->
+    {% if cart_items %}
+    <div class="griid">
+        <!-- {% endif %} -->
+  
+        <!-- {% if cart_items %} -->
+       
+        <div class="cart-container">
+                <h1>Your Shopping Cart</h1>
+      
+            {% for cart_item in cart_items %}
+          
+            <div class="cart-item">
+                <div class="item-details">
+                    <img class="imgyes" src="{{ cart_item.product.imgsrc}}" alt="MISK MEEM">
+                    <div class="item-info">
+                        <h2>{{ cart_item.product.name}}</h2>
+                        <div><span class="price"> ${{ cart_item.product.price}} </span></div>
+                        <!-- <a href="#" class="remove-item"> <img data-v-3a495f43="" src="https://ae.goldenscent.com/assets/trash.svg" alt="trashicon" class="trashicon"></a> -->
+                        <!-- <div class="item-actions">
+                            <button class="decrease-qty">-</button>
+                            <input type="number" value="1" class="item-qty">
+                            <button class="increase-qty">+</button>
+                        </div> -->
+                    </div>
+                </div>
+            
+                <!-- <div class="item-actions">
+                    <span>Price:</span>
+                    <span class="price">{{ cart_item.product.price}}</span>
+                </div> -->
+                <div class="item-actions">
+                    <button class="decrease-qty">-</button>
+                    <!-- <input type="number" value="1" class="item-qty"> -->
+                    <div data-v-3a495f43="" class="qty-text">{{cart_item.quantity}}</div>
+                    <button class="increase-qty">+</button>
+                </div>
+                <div class="item-subtotal">
+                    <span>Subtotal:</span>
+                    <span class="price">{{ cart_item.subtotal}}</span>
+                </div>
+                <a href="{% url 'shop:remove_from_cart' cart_item.product.id %}" class="remove-item"> <img data-v-3a495f43="" src="https://ae.goldenscent.com/assets/trash.svg" alt="trashicon" class="trashicon"></a>
+                
+            </div> 
+                       
+            {% endfor %} 
+        </div>           
+                
+        
+        <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
+            <h2 class="font-bold text-sm mb-5">Order summary</h2>
+            <div class="flex justify-between text-sm mb-5">
+            <span class="text-gray-500">Total products</span>
+            <b id="sub-total">{{ cart.total_price}} $</b>
+            </div>
+            <div id="shipping-cost" class="flex justify-between text-sm mb-5 hidden">
+            <span class="text-gray-500">Shipping charges</span>
+            <b>0 $</b>
+            </div>
+            
+            <div id="total-discount" class="flex justify-between text-sm discounted">
+            <span class="text-gray-500 block  h-10">Discount</span>
+            <b>- -0.01 $</b>
+            </div>
+            <div class="flex justify-between text-lg mb-5">
+            <span class="text-gray-500">Total</span>
+            <b data-cart-total="">{{ cart.total_price}} $</b>
+            </div>
+            <div class="flex justify-between text-sm mb-5">
+            <small class="text-gray-500">
+            * Prices include tax
+            </small>
+            </div>
+            <div class="cart-submit-wrap">
+            <salla-button id="cart-submit" loader-position="center" width="wide" class="s-button-wrap hydrated" shape="btn" color="primary" fill="solid" size="medium" type="button"><!----><button loader-position="center" type="button" onclick="location.href='{% url 'shop:order' %}'" class="undefined s-button-element s-button-btn s-button-solid s-button-wide s-button-primary s-button-loader-center"><span class="s-button-text">
+            Complete the order
+            </span></button></salla-button>
+            </div>
+        </div>
+            
+
+    </div>
+    {% endif %}
+
+
+        <!-- <table style="width:100%">
+        <tr> <th> products</th>
+            <th> price </th>
+            <th> quantity </th>
+            <th> subtotal </th>
+            </tr>
+             {% for cart_item in cart_items %}
+                    <tr>
+                        <th>
+                        <div class="cart-item">
+                            <div class="item-details">
+                                <img class="imgyes" src="{{ cart_item.product.imgsrc}}" alt="MISK MEEM">
+                                <div class="item-info">
+                                    <h2>{{ cart_item.product.name}}</h2>
+                                    <a href="#" class="remove-item">Remove</a>
+                                </div>
+                            </div>
+                                </th>
+                                <th>
+                                    <div class="item-actions">
+                                        <button class="decrease-qty">-</button>
+                                        <input type="number" value="1" class="item-qty">
+                                        <button class="increase-qty">+</button>
+                                    </div>
+                                </th>
+                            <th> 
+                            <div class="item-subtotal">
+                                <span>Subtotal:</span>
+                                <span class="price">{{ cart_item.product.price}}</span>
+                            </div>
+                        </th>
+                         </div> -->
+                        <!-- </tr> --> 
+        <!-- {% endfor %} -->
+        <!-- </table> -->
+        <!-- {% for cart_item in cart_items %}
+        <div class="cart-item">
+            <div class="no.one">
+            <div class="item-details">
+                <img class="imgyes" src="{{ cart_item.product.imgsrc}}" alt="MISK MEEM">
+                <div class="item-info">
+                    <h2>{{ cart_item.product.name}}</h2>
+                    <a href="#" class="remove-item">Remove</a>
+                </div>
+            </div>
+            </div>
+            <div class="no.one">      
+                    <div class="item-actions">
+                        <button class="decrease-qty">-</button>
+                        <input type="number" value="1" class="item-qty">
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+            </div>
+            </div> 
+            <div>
+                <span class="price">{{ cart_item.product.price}}</span>
+                
+            </div>
+            <div class="no.one">
+            <div class="item-subtotal">
+                <span>Subtotal:</span>
+                <span class="price">{{ cart_item.product.price}}</span>
+            </div>
+            </div>
+        </div>
+        {% endfor %} -->
+        
+            <!-- 
+        {% if cart_items %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td><img class="imgyes" src="{{ item.product.imgsrc}}" alt="MISK MEEM">{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.price }}</td>
+                        <td>{{ item.product.price }}</td>
+                        <td><a href="#">Remove</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td>Total:</td>
+                    <td>{{ total_price }}</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <a href="#" class="btn btn-primary">Checkout</a>
+        {% else %}
+        <p>Your shopping cart is empty.</p>
+        {% endif %} -->
+
+   
+        <!-- <div class="cart-summary">
+            <h2>Cart Summary</h2>
+            <div class="summary-details">
+                <span>Total:</span>
+                <span class="total-price">AED335.00</span>
+            </div>
+            <button class="checkout-button">Proceed to Checkout</button>
+        </div> -->
+    <!-- </div> -->
+    
+</div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="{% static 'cart.js' %}"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script>
+        let cart_total = "{{cart.total_price}}"
+        let cart_id = "{{cart.id}}"
+    
+        function makePayment() {
+            FlutterwaveCheckout({
+            public_key: "FLWPUBK_TEST-e8ce9a848bc4d53bbee09e8cdccc670c-X",
+            tx_ref: "titanic-48981487343MDI0NzMx",
+            amount: cart_total,
+            currency: "USD",
+            payment_options: "card, mobilemoneyghana, ussd",
+            redirect_url: "http://127.0.0.1:8000/confirm_payment/"+cart_id,
+            meta: {
+                consumer_id: 23,
+                consumer_mac: "92a3-912ba-1192a",
+            },
+            customer: {
+                email: "rose@unsinkableship.com",
+                phone_number: "08102909304",
+                name: "{{user}}",
+            },
+            customizations: {
+                title: "The Titanic perfume online Shop",
+                description: "Payment for an awesome Perfume",
+                logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+            },
+            });
+        }
+    </script>
+
+
+</body>
+</html>

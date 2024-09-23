@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Orders</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'myaccount.css' %}">
+    <script defer src="{% static 'myaccount.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'shop:addtocart' %}" class="btn">My Cart</a>
+        <a href="{% url 'shop:main' %}" class="btn"> HOME</a>
+        <h1>Order Confirmation</h1>
+        
+        <div class="order-details">
+            <h2>Order ID: {{ orders.id }}</h2>
+            <p>Order Date: {{ orders.created_at|date:"F j, Y, g:i a" }}</p>
+            <p>User: {{ user.username }}</p>
+        </div>
+        
+        <div class="cart-items">
+            <h2>Your Ordered Items</h2>
+            
+            {% if products %}
+                <ul>
+                    {% for item in products %}
+                        <li>
+                            <div class="product">
+                                <img src="{{ item.productid.imgsrc }}" alt="{{ item.product.name }}" width="100">
+                                <div class="product-info">
+                                    <h4>{{ item.productid.name }}</h4>
+                                    <p>Price: {{ item.price }}</p>
+                                    <p>Quantity: {{ item.Quantity }}</p>
+                                    <!-- <p>Total: {{ ite}}</p> -->
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No items found in your cart.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

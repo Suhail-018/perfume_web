@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styleform.css' %}">
+  
+</head>
+<body>
+<!-- templates/home.html -->
+<h1>Welcome to the home page</h1>
+
+{% if user.is_authenticated %}
+    <p>Hello, {{ user.username }}! You are logged in.</p>
+    <a href="{% url 'shop:logout' %}">Logout</a>
+{% else %}
+    <p>You are not logged in.</p>
+    <a href="{% url 'shop:login' %}">Login</a> |
+    <a href="{% url 'shop:signup' %}">Sign Up</a>
+{% endif %}
+</body>
+</html>
